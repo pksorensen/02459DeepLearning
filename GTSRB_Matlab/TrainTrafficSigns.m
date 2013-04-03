@@ -22,7 +22,7 @@ for nNumFolder = 1:43
             % TODO!
             % if you want to work with a border around the traffic sign
             % comment the following line
-            %Img = Img(Rois(i, 2) + 1:Rois(i, 4) + 1, Rois(i, 1) + 1:Rois(i, 3) + 1);
+            %Data{nNumFolder}.Imgs{i} = Data{nNumFolder}.Imgs{i}(Data{nNumFolder}.Rois(i, 2) + 1:Data{nNumFolder}.Rois(i, 4) + 1, Data{nNumFolder}.Rois(i, 1) + 1:Data{nNumFolder}.Rois(i, 3) + 1);
 
             % TODO!
             % replace this line by the function call of your training
