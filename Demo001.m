@@ -31,7 +31,7 @@ N*42
 
 %%
 impatches = zeros(N*42,M*M*3);
-labels = zeros(N*42);
+labels = zeros(N*42,1);
 pn = 1;
 for n=1:length(Data)
    %classes(n) = length(Data{n}.Classes) ;
