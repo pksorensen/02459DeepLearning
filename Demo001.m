@@ -45,3 +45,13 @@ for n=1:length(Data)
        pn = pn + n_patches;
    end       
 end
+
+%% FULL IMAGES
+addpath(genpath('.'))
+Data = TSD_readGTData('TrainIJCNN2013\TrainIJCNN2013\gt.txt')
+for i = randperm(length(Data))
+imshow(sprintf('TrainIJCNN2013/TrainIJCNN2013/%.5d.ppm',Data(i).fileNo))
+a = rectangle('Position',[ Data(i).leftCol Data(i).topRow ...
+    (Data(i).bottomRow - Data(i).topRow)+1 (Data(i).rightCol - Data(i).leftCol)+1], 'EdgeColor',[1 0 0] )% [x y w h])
+pause
+end
