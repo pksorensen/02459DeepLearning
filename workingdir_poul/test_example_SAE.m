@@ -1,22 +1,24 @@
 clear all
 addpath(genpath('../'));
+addpath(genpath('../../DeepLearnToolbox'));
 load PatchesData_8_8_1000000;
 
 train_x = double(PATCHES)/255;
+clear('PATCHES')
 %test_x  = double(test_x)/255;
 
 %%  ex1 train a 100 hidden unit SDAE and use it to initialize a FFNN
 %  Setup and train a stacked denoising autoencoder (SDAE)
 rng(0);
-sae = saesetup([size(train_x,2) 30]);
+sae = saesetup([size(train_x,2) 64]);
 sae.ae{1}.activation_function       = 'sigm';
 sae.ae{1}.learningRate              = 0.01;
-sae.ae{1}.inputZeroMaskedFraction   = 0.5;
+sae.ae{1}.inputZeroMaskedFraction   = 0.1;
 opts.numepochs =   100;
-opts.batchsize = 50;
+opts.batchsize = 100;
 sae = saetrain(sae, train_x, opts);
 figure(3)
-visualize_rgb(sae.ae{1}.W{1});
+visualize(sae.ae{1}.W{1}');
 %%
 % Use the SDAE to initialize a FFNN
 nn = nnsetup([784 100 10]);
